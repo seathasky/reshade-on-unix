@@ -10,7 +10,7 @@ use LWP::UserAgent;
 use File::Spec;
 use File::Path qw(make_path);
 
-my $userAgent = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
+my $userAgent = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0});
 $userAgent->agent("reshade-on-unix/0.1");
 $userAgent->show_progress(1);
 
@@ -34,9 +34,10 @@ sub downloadFile {
 sub getGamePath {
     if (defined $ARGV[0]) {
         if (-d $ARGV[0]) {
-            return $ARGV[0];
-        } else {
-            print "Supplied argument [${ARGV[0]}] is not a valid directory!\n";
+            return $ARGV[0]
+        }
+        else {
+            print "Supplied argument [${ARGV[0]}] is not a valid directory!\n"
         }
     }
     if ($^O eq "darwin") {
